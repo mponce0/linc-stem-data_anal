@@ -11,7 +11,7 @@ source("auxFns.R")
 # Plants with SALTS #
 #####################
 
-analysis_salt <- function(filename="plants_salts.csv", group=NA, savePlt=TRUE) {
+analysis_salt <- function(filename="plants_salts.csv", group=NA, savePlt=TRUE, outputFN=yourName) {
 
 	mprint("reading data for <<Plants with Salts treatment>>")
 
@@ -33,7 +33,7 @@ analysis_salt <- function(filename="plants_salts.csv", group=NA, savePlt=TRUE) {
 	boxplot(salts)
 	#boxplot(salts, col=c(2:ncol(salts)))
 
-	if (savePlt) savePlot("salts_analysis.pdf")
+	if (savePlt) savePlot(paste0(outputFN,"--salts_analysis.pdf"))
 
 	# T-tests
 	ttests(salts, ttype=2)
@@ -44,7 +44,7 @@ analysis_salt <- function(filename="plants_salts.csv", group=NA, savePlt=TRUE) {
 ############################
 ## C o m p e t i t i o n  ##
 ############################
-analysis_competition <- function(filename="competition.csv", group=NA, savePlt=TRUE) {
+analysis_competition <- function(filename="competition.csv", group=NA, savePlt=TRUE, outputFN=yourName) {
 
 	mprint("reading data for <<Plants with competition>>")
 
@@ -80,7 +80,7 @@ analysis_competition <- function(filename="competition.csv", group=NA, savePlt=T
 
 	# change colors
 	boxplot(low,medium,high, col=c(2,3,4))
-	if (savePlt) savePlot("competition_analysis.pdf")
+	if (savePlt) savePlot(paste0(outputFN,"--competition_analysis.pdf"))
 
 	pause()
 
@@ -99,7 +99,7 @@ analysis_competition <- function(filename="competition.csv", group=NA, savePlt=T
 ###  S U N   vs   S H A D E  ##
 ###############################
 
-analysis_sun_shade <- function(filename="Plants_shade_sun.csv", group=NA, savePlt=TRUE) {
+analysis_sun_shade <- function(filename="Plants_shade_sun.csv", group=NA, savePlt=TRUE, outputFN=yourName) {
 	
 	mprint("Reading data for <<Plants with sun/shade treatment>>")
 
@@ -124,7 +124,7 @@ analysis_sun_shade <- function(filename="Plants_shade_sun.csv", group=NA, savePl
 	pause()
 
 	boxplot(plant_sun_shade_data[,-1])
-	if (savePlt) savePlot("sun_shade_analysis.pdf")
+	if (savePlt) savePlot(paste0(outputFN,"--sun_shade_analysis.pdf"))
 	pause()
 
 	par(mfrow=c(1,4))
@@ -133,7 +133,7 @@ analysis_sun_shade <- function(filename="Plants_shade_sun.csv", group=NA, savePl
 	boxplot(plant_sun_shade_data$Stomata.Density ~ plant_sun_shade_data$Plant.Exposure)
 	boxplot(plant_sun_shade_data$Chlorophyll.Concentration ~ plant_sun_shade_data$Plant.Exposure)
 
-	if (savePlt) savePlot("sun_shade_4_analysis.pdf")
+	if (savePlt) savePlot(paste0(outputFN,"--sun_shade_4_analysis.pdf"))
 	
 	par(mfrow=c(1,1))
 	
@@ -241,6 +241,10 @@ if (interactive()) {
 	mprint(" >>> Available functions")
 	cat( paste( ls()[grep("anal",ls())], collapse='\n' ) )
 	cat("\n")
+
+	yourName <- "linC-STEM_"
+	yourName <- readline(" >>> Please enter your's or your's group name... ")
+
 }
 
 ##########################################
