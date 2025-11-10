@@ -238,13 +238,20 @@ ttest_plants <- function(plant_sun_shade_data, group_id=1:nrow(plant_sun_shade_d
 ##########################################
 
 if (interactive()) {
+	cat("\n ------------------------------------------------------------ \n\n")
+	# inquire name
+	yourName <- readline(" >>> Please enter your or your group's name (Please do NOT use spaces!) ... ")
+	if (yourName == "") yourName <- "linC-STEM_"
+	cat(paste("\n  Hello and Welcome",yourName,"!!! \n\n"))
+
 	mprint(" >>> Available functions")
-	cat( paste( ls()[grep("anal",ls())], collapse='\n' ) )
-	cat("\n")
+	cat( paste0('  ',paste( ls()[grep("anal",ls())], collapse='() \n  ' ),"()") )
+	cat("\n\n")
 
-	yourName <- "linC-STEM_"
-	yourName <- readline(" >>> Please enter your's or your's group name... ")
-
+	grps <- c("Cedarbrae1","Cedarbrae2","Pearson","WestHill")
+	mprint(" >>> Possible group selection: ", hdr=NA)
+	mprint(paste('  ',grps,collapse=" | "), hdr=NA)
+	cat("\n ------------------------------------------------------------ \n\n")
 }
 
 ##########################################
