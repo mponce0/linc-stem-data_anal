@@ -237,7 +237,7 @@ ttest_plants <- function(plant_sun_shade_data, group_id=1:nrow(plant_sun_shade_d
 
 ##########################################
 
-if (interactive()) {
+#if (interactive()) {
 	cat("\n ------------------------------------------------------------ \n\n")
 	# inquire name
 	yourName <- readline(" >>> Please enter your or your group's name (Please do NOT use spaces!) ... ")
@@ -252,6 +252,6 @@ if (interactive()) {
 	mprint(" >>> Possible group selection: ", hdr=NA)
 	mprint(paste('  ',grps,collapse=" | "), hdr=NA)
 	cat("\n ------------------------------------------------------------ \n\n")
-}
+#}
 
 ##########################################
